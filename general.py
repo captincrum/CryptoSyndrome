@@ -1,10 +1,11 @@
 # Name       : Shawn McCrum
-# Date       : 2017/10/182
+# Date       : 2017/10/26
 # Description: Create a flexible and organized environment. This file contains the most basic of actions.
 import os
 
 
-# # # # # # # # # # # # # # # Import os section # # # # # # # # # # # # # # # # # # #
+# # # Import os section # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 
 # Create a project folder for project
 def create_project_dir(directory):
@@ -33,8 +34,10 @@ def append_to_file(path, data):
   with open(path, 'a') as file:
     file.write(data + '\n')
 
-# # # # # # # # # # # # # # # import os finished  # # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # Upkeep Section Start  # # # # # # # # # # # # # # # # #
+    
+# # # Import os Finished  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # Upkeep Section Start  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 
 # Only use is a cleaner output of information
 def clean_data(dirty_line):
@@ -59,8 +62,9 @@ def keys_values(arg):
     count += 1
 
 
-# # # # # # # # # # # # # # # Upkeep Section Finish  # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # Managing Funds (Gdax & Coinbase) # # # # # # # # # # # # # # #
+# # # Upkeep Section Finish  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # Managing Funds # # # # # # # # # # # # # # # # # # # # # # Gdax & Coinbase # # #
+
 
 # Deposit from GDAX into Coinbase Wallet
 def deposit_funds(auth_client, account_id, deposit_size):
@@ -79,8 +83,10 @@ def withdraw_funds(auth_client, account_id, withdraw_size):
   }
   auth_client.withdraw(withdrawParams)
 
-# # # # # # # # # # # # # # # Managing Funds Finish  # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # LIVE TRADING START # # # # # # # # # # # # # # # # # # #
+  
+# # # Finished Managing Funds  # # # # # # # # # # # # # # # # # Gdax & Coinbase # # #
+# # # LIVE TRADING START # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 
 # Buy 'some_amount' BTC @ 'some_price' USD
 def buy_order(auth_client, exchange, buy_size, trigger):
@@ -102,4 +108,5 @@ def cancel_all_orders(auth_client, exchange_type):
     auth_client.cancel_all(product=trade)
     print('Cancel all open orders for ' + trade + ': Success')
 
-# # # # # # # # # # # # # # # LIVE TRADING END # # # # # # # # # # # # # # # # # # #
+    
+# # # LIVE TRADING END # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
