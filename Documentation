@@ -1,15 +1,18 @@
-Index:
+References: 
+
+  Github: http://bit.ly/2yTB6v0
+  GDAX  : http://bit.ly/2zH8tyh
+  
+  
+# # # Index # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   
   I   | Definitions
   II  | Order Rules
   III | Order Types
   IV  | Time Rules
 
-  
-
 
 # # # I   | Definitions # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-
 
 Ask price - Price a seller is willing to accept for a security.
 Ask Size  - Amount of a security that a market maker is offering to sell at the ask price.
@@ -94,7 +97,6 @@ Orders Types:
   
 # # # IV  | Time Rules  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
-
 Time in Force:
   - Time in force policies provide guarantees about the lifetime of an order.
   
@@ -109,4 +111,3 @@ Time in Force:
 	FOK - Fill or kill
 		- FOK orders are rejected if the entire size cannot be matched.
 		* Match also refers to self trades.
-		
