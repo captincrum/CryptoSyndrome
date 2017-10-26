@@ -1,0 +1,101 @@
+Referenced Data: http://bit.ly/2zH8tyh
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+Ask price - Price a seller is willing to accept for a security.
+Ask Size  - Amount of a security that a market maker is offering to sell at the ask price.
+Bid price - Price a buyer is willing to pay for a security. 
+Bid Size  - Number of shares being offered for purchase at a specified bid price that 
+      			a buyer is willing to purchase at that bid price.
+Spread    - Difference between bid / ask price.
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+Order Lifecycle:
+  - An order can execute in part or whole
+  - Received: Valid orders sent to the matching engine are confirmed immediately 
+  - Open	: Any part of order not filled immediately
+  - Done	: Filled or canceled orders 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+Orders Types:
+  - Orders can only be placed if the users account has sufficient funds
+  - Funds for trade will be placed on hold for all open orders
+
+  + Three Order Types:
+    1. Limit Orders
+      - Buy or sell a set amount of a financial instrument at a specified price or better.
+
+      + Buy Limit Order
+        - The buyer is not willing to pay more than $x per share.
+        - bl_hold(USD) = price * size * (1 + fee - percent)
+
+      + Sell Limit Order
+        - The share price must be at least $x to execute sale.
+        - hold = num_btc_sell
+
+      + Limit Order Parameters:
+	    Param 		      Description
+        price 		      Price per bitcoin
+ 	    size 		      Amount of BTC to buy or sell
+	    time_in_force     [optional] GTC, GTT, IOC, or FOK (default is GTC)
+	    cancel_after      [optional]* min, hour, day
+	    post_only 	      [optional]** Post only flag
+	    * Requires time_in_force to be GTT
+	    ** Invalid when time_in_force is IOC or FOK
+
+    2. Market Order
+      - Buy or sell an investment immediately at the best available current price.
+	  - Market orders execute immediately and no part of the market order will go on the open order book.
+	  - Market orders are always considered takers and incur taker fees.
+
+	  + Buy
+	    - Order funds (if specified) will be put on hold
+	    - If funds not specified, 100% of account wallet is placed on hold for the duration of the market order
+
+	  + Sell
+	    - Order size in BTC will be put on hold
+	    - If size not specified, 100% of BTC funds are placed on hold
+
+	  + Market Order Parameters:
+        Param 	          Description
+        size 		      [optional]* Desired amount in BTC
+        funds 		      [optional]* Desired amount of quote currency to use
+        * size or funds required.
+
+    3. Stop Order
+      - Buy or sell a security when its price surpasses a particular point.
+	  - Wait to trigger based on the movement of the last trade price.
+
+	  + Buy Stop Order
+	    - Triggers when the last trade price value changes at/or ABOVE set price
+
+	  + Sell Stop Order
+	    - Triggers when the last trade price value changes at/or BELOW the set price
+
+	  + Stop Order Parameters:
+        Param 	          Description
+        price 	          Desired price at which the stop order triggers
+        size 	          [optional]* Desired amount in BTC
+        funds 	          [optional]* Desired amount of quote currency to use
+        * size or funds required.
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+Time in Force:
+  - Time in force policies provide guarantees about the lifetime of an order.
+  
+  Four Time in Force Policies:
+	GTC - Good till canceled
+	    - GTC orders remain open on the book until canceled.
+	GTT - Good till time
+		- GTT orders remain open on the book until caneled or the allotted canceled_after reaches zero.
+		- GTT orders are guaranteed to cancel before any other order is processed. 
+	IOC - Immediate or cancel
+		- IOC orders instantly cancel the remaining size of the limit order instead of opening it on the book.
+	FOK - Fill or kill
+		- FOK orders are rejected if the entire size cannot be matched.
+		* Match also refers to self trades.
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
