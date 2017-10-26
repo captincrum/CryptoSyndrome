@@ -1,15 +1,25 @@
-Referenced Data: http://bit.ly/2zH8tyh
+Index:
+  
+  I   | Definitions
+  II  | Order Rules
+  III | Order Types
+  IV  | Time Rules
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+  
+
+
+# # # I   | Definitions # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
 
 Ask price - Price a seller is willing to accept for a security.
 Ask Size  - Amount of a security that a market maker is offering to sell at the ask price.
 Bid price - Price a buyer is willing to pay for a security. 
 Bid Size  - Number of shares being offered for purchase at a specified bid price that 
-      			a buyer is willing to purchase at that bid price.
+			a buyer is willing to purchase at that bid price.
 Spread    - Difference between bid / ask price.
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+# # # II  | Order Rules # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 Order Lifecycle:
   - An order can execute in part or whole
@@ -17,7 +27,8 @@ Order Lifecycle:
   - Open	: Any part of order not filled immediately
   - Done	: Filled or canceled orders 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+# # # III | Order Types # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 Orders Types:
   - Orders can only be placed if the users account has sufficient funds
@@ -36,12 +47,12 @@ Orders Types:
         - hold = num_btc_sell
 
       + Limit Order Parameters:
-	    Param 		      Description
-        price 		      Price per bitcoin
- 	    size 		      Amount of BTC to buy or sell
-	    time_in_force     [optional] GTC, GTT, IOC, or FOK (default is GTC)
-	    cancel_after      [optional]* min, hour, day
-	    post_only 	      [optional]** Post only flag
+	    Param	        |  	 Description
+        price 		      	| Price per bitcoin
+ 	    size 		| Amount of BTC to buy or sell
+	    time_in_force       | [optional] GTC, GTT, IOC, or FOK (default is GTC)
+	    cancel_after        | [optional]* min, hour, day
+	    post_only 	        | [optional]** Post only flag
 	    * Requires time_in_force to be GTT
 	    ** Invalid when time_in_force is IOC or FOK
 
@@ -59,9 +70,9 @@ Orders Types:
 	    - If size not specified, 100% of BTC funds are placed on hold
 
 	  + Market Order Parameters:
-        Param 	          Description
-        size 		      [optional]* Desired amount in BTC
-        funds 		      [optional]* Desired amount of quote currency to use
+        Param 	        |  	Description
+        size 		| [optional]* Desired amount in BTC
+        funds 		| [optional]* Desired amount of quote currency to use
         * size or funds required.
 
     3. Stop Order
@@ -75,13 +86,14 @@ Orders Types:
 	    - Triggers when the last trade price value changes at/or BELOW the set price
 
 	  + Stop Order Parameters:
-        Param 	          Description
-        price 	          Desired price at which the stop order triggers
-        size 	          [optional]* Desired amount in BTC
-        funds 	          [optional]* Desired amount of quote currency to use
+        Param	        |  	 Description
+        price	        | Desired price at which the stop order triggers
+        size	        | [optional]* Desired amount in BTC
+        funds	        | [optional]* Desired amount of quote currency to use
         * size or funds required.
+  
+# # # IV  | Time Rules  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 Time in Force:
   - Time in force policies provide guarantees about the lifetime of an order.
@@ -97,5 +109,4 @@ Time in Force:
 	FOK - Fill or kill
 		- FOK orders are rejected if the entire size cannot be matched.
 		* Match also refers to self trades.
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+		
