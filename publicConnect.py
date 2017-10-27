@@ -1,5 +1,5 @@
 # Name       : Shawn McCrum
-# Date       : 2017/10/26
+# Date       : 2017/10/27
 # Description: GDAX API -- work with information available to public account
 #            : Useful with specific information; like connection limitations
 import gdax
@@ -9,14 +9,14 @@ import gdax
 def public_account():
 
   ticker_ids  = ['BTC-USD']#, 'ETH-USD', 'ETH-BTC'] # Each relevant ticker
-  pub_connect = gdax.PublicClient()               # Open connection with public host
+  pub_connect = gdax.PublicClient()                 # Open connection with public host
 #  pub_product = pub_connect.get_products()
 #    keys_values(ticker_id, pub_product[0])
 
   for ticker_id in ticker_ids:
-    pub_ob      = pub_connect.get_product_order_book(ticker_id, level=2) # Connects to live order book (public)
-    ticker_bid  = pub_ob['bids']
-    ticker_ask  = pub_ob['asks']
+    pub_ob     = pub_connect.get_product_order_book(ticker_id, level=2) # Connects to live order book (public)
+    ticker_bid = pub_ob['bids']
+    ticker_ask = pub_ob['asks']
 
     for ask_group in ticker_ask:
       ask_price  = ask_group[0]
