@@ -1,7 +1,6 @@
 # Name       : Shawn McCrum
 # Date       : 2017/10/27
 # Description: GDAX API -- work with information available to public account
-#            : Useful with specific information; like connection limitations
 import gdax
 
 
