@@ -1,5 +1,5 @@
 # Name       : Shawn McCrum
-# Date       : 2017/10/26
+# Date       : 2017/10/28
 # Description: File specifically for mathematical equations
 import statistics
 
@@ -10,5 +10,6 @@ def mean(array):
     a_mode   = statistics.mode(map(float, array))
     print('Size  :', len(array), '\nMean  :', a_mean, '\nMedian:', a_median, '\nMode  :', a_mode)
   except:
-    print('Common Value:', float(array[0]))
+    x = sum(map(float, array)) / len(array)
+    print('Common Value:', x)
     pass
