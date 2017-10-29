@@ -1,5 +1,5 @@
 # Name       : Shawn McCrum
-# Date       : 2017/10/18
+# Date       : 2017/10/28
 # Description: GDAX API -- work with information from the live order book.
 import gdax, time
 from equation import *
@@ -41,14 +41,15 @@ def start_websocket():
     def on_close(self):
       time_limit = (time.time() - start_time) # Records time taken (before calculations) to meet qualifications set by limit
       mean(ord_price)                         # Mean, median, mode
-      print(time_limit)
 
-  wsClient = myWebsocketClient() # Create value passed to myWebsocket
-  wsClient.start()               # Open connection
+  # Associate classes and start class
+  wsClient = myWebsocketClient()
+  wsClient.start()
 
-  # Parameters for websocket once the connection limits are met
+  # Parameters for websocket once the connection limit is met
   while (len(ord_seq) < limit):
-    pass
-  wsClient.close()  # Method to close the websocket connection
-  time.sleep(0.3)   # Interval to wait before reconnecting
-  start_websocket() # Begin connection
+    time.sleep(.4) # Interval to wait before reconnecting
+
+  # End session and restart it for infinite loop
+  wsClient.close() # Method to close the websocket connection
+#  start_websocket() # Begin connection # Becomes an issue with tkinter; create toggle switch
