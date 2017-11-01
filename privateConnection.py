@@ -1,5 +1,5 @@
 # Name       : Shawn McCrum
-# Date       : 2017/10/18
+# Date       : 2017/11/01
 # Description: GDAX API -- connect to the users account and wallets using the generated API key on the GDAX website.
 import gdax
 from general import *
