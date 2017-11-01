@@ -1,5 +1,5 @@
 # Name         : Shawn McCrum
-# Date         : 2017/10/29
+# Date         : 2017/11/01
 # Description  : Use Gdax API. Set up account access.
 # Documentation: https://github.com/danpaquin/gdax-python
 from tkinter import *
@@ -7,11 +7,14 @@ from myWS import *
 from publicConnect import *
 from privateConnection import *
 
+ticker_ids = ['BTC-USD']#, 'ETH-BTC', 'ETH-USD']] #, 'ETH-USD', 'ETH-BTC'] # Each relevant ticker
+fld        = 'Data/'
 
-class GDAX_Bot:               # Starts each instance of GDAX_Bot
-  def __init__(self, master): # Start_bot tkinter project
-    frame = Frame(master)     # Box for GUI
-    frame.pack()              # Tell tkinter to pack the frame
+class GDAX_Bot:               # Starts each instance of bot
+  def __init__(self, master): # Definition to run first each time class is started
+    create_project_dir(fld)   # Create fld for project data
+    frame = Frame(master)     # Create box for GUI
+    frame.pack()              # Packing frame tells tkinter to place
 
     # Each buttons function
     self.update_ws  = Button(frame, text='Webs Connect', command=self.btn_i)
@@ -22,18 +25,19 @@ class GDAX_Bot:               # Starts each instance of GDAX_Bot
     self.update_pub.pack(side=LEFT)
     self.update_acc.pack(side=RIGHT)
 
-  # Execute each time the corresponding button is pressed
-  def btn_i(self):    # Associate: btn_i with the function that updates websocket
-    start_websocket() # Accesses : Websocket the order book in sequential order
-  def btn_ii(self):   # Associate: btn_ii with the function that updates public information
-    public_account()  # Accesses : information available to everyone
-  def btn_iii(self):  # Associate: btn_iii with the function that updates user account information
-    access_account()  # Accesses : accounts using login credentials
+  def btn_i(self):                    # Execute def each time the corresponding button is pressed
+    for ticker_id in ticker_ids:      # Iterate each ticker id in ticker ids
+      start_websocket(fld, ticker_id) # Accesses : Websocket the order book in sequential order
+  def btn_ii(self):                   # Updates user public account information
+    for ticker_id in ticker_ids:      # Iterate each ticker id in ticker ids
+      public_account(fld, ticker_id)  # Accesses : information available to everyone
+  def btn_iii(self):                  # Updates user account information
+    access_account(fld)               # Accesses : accounts using login credentials
 
-root = Tk()           # Creates variable using tkinter import
-bot  = GDAX_Bot(root) # Creates variable using root class GDAX_Bot
-
+# Start instance for tkinter (GUI tool)
+root = Tk()                   # Creates variable using tkinter import
+bot  = GDAX_Bot(root)         # Creates variable using root class GDAX_Bot
 # Style section for Tkinter root
-root.title('Stock Syndrome')
-root.geometry('500x400')
-root.mainloop()
+root.title('Crypto Syndrome') # Program name
+root.geometry('500x400')      # Size of program box (in pixels)
+root.mainloop()               # Loop used to keep project open until user clicks close
