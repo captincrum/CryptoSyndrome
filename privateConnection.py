@@ -5,7 +5,10 @@ import gdax
 from general import *
 
 # Account Connection
-def access_account():
+def access_account(fld):
+
+  usr_file = fld + 'user.txt'     # Create file name/path
+  append_to_file(usr_file, fld)   # Append creates file if it doesn't exist or appends to existing file
 
   # Required information for Gdax login
   KEY       = ''
